@@ -53,13 +53,47 @@ const password3 = 'like a BOSS';
 
 // Being sure to do all that's outlined above, write
 // your code below!
+const logUser1 = getEmail() == user1;
+const logUser2 = getEmail() == user2;
+const logUser3 = getEmail() == user3;
+const passUser1 = getPassword() == password1;
+const passUser2 = getPassword() == password2;
+const passUser3 = getPassword() == password3;
+const logUserPass1 = getEmail() == user1 && getPassword() == password1;
+const logUserPass2 = getEmail() == user2 && getPassword() == password2;
+const logUserPass3 = getEmail() == user3 && getPassword() == password3;
+
+const notInDatabaseEmail = !logUser1 || !logUser2 || !logUser3;
+const correctUserPassword = logUserPass1 || logUserPass2 || logUserPass3;
+const incorrectPassword = logUser1 && !passUser1 || logUser2 && !passUser2 || logUser3 && !passUser3;
+const regUser = (getEmail() !== user1 && getPassword() !== password1 || getEmail() !== user2 || getPassword() !== password2 || getEmail() !== user3 && getPassword() !== password3);
+const NotValidEmail = !(getEmail().endsWith('@codeimmersives.com') && getEmail().length >= 20);
+const NotValidPassword = getPassword().length >= 8 && getPassword().toUpperCase() !== getPassword() && getPassword().toLowerCase() !== getPassword();
 
 
+if(correctUserPassword) {
+  return console.log('Welcome, you are logged in');
+}
 
+if(incorrectPassword) {
+  return console.log('Your Password is INCORRECT!!')
+}
 
+if(!NotValidPassword) {
+  return console.log('Password input is INVALID!! please enter a correct password with one uppercase at least and 8 characters minimum. example; passWords');
+}
 
+if(NotValidEmail) {
+  return console.log('This is not a valid email. Make sure after your email "@" codeimmersives.com follows');
+}
 
+if(regUser) {
+  return console.log('Hello, You are signed up now!');
+}
 
+if(notInDatabaseEmail) {
+  return  console.log('wrong email here')
+}
 
 // Solution to the back-end portion of this app.
 // Don't need to touch this, but you can check it out!
